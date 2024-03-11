@@ -1,5 +1,5 @@
 // ccn-okta/src/lib/model.ts
-// Description: This file contains the types for the models used in the application.
+// the type of the data returned from the CCN on the posts endpoint on the Heroku server
 
 export type PostLike = {
   createdAt: string;

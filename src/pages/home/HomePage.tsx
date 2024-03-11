@@ -7,6 +7,9 @@ import { PostsResponse } from "../../lib/model";
 import axios from "axios";
 
 export default function HomePage() {
+  // Declare a state variable state and a function setState to update the state.
+  // Use the useState hook to initialize the state with an object containing a status property set to "loading".
+  // The FetchState type is used to define the shape of the state object.
   const [state, setState] = useState<FetchState<PostsResponse>>({
     status: "loading",
   });
@@ -17,6 +20,8 @@ export default function HomePage() {
         const res = await axios.get(
           "https://codaisseur-coders-network.herokuapp.com/posts"
         );
+        // update the state with the fetched data. Set the status property to "success"
+        // and assign the response data to the data property.
         setState({ status: "success", data: res.data });
       } catch (error) {
         setState({ status: "error", error });
