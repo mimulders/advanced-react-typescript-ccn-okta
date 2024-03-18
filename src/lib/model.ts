@@ -1,5 +1,5 @@
 // ccn-okta/src/lib/model.ts
-// the type of the data returned from the CCN on the posts endpoint on the Heroku server
+// the type of the data returned from the CCN on the posts endpoint on the OnRender server
 
 export type PostLike = {
   createdAt: string;

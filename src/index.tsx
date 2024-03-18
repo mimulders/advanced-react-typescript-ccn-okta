@@ -5,6 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
+import axios from "axios";
+
+declare global {
+  interface Window {
+    axios: any;
+  }
+}
+
+window.axios = axios;
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

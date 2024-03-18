@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Typography, Container, Grid, Card, CardContent } from "@mui/material";
 import { FetchState } from "../../util/fetchstate";
 import { PostsResponse } from "../../lib/model";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axios"; // import the axios instance from the axios.ts file; it contains the base url
 
 export default function HomePage() {
   // Declare a state variable state and a function setState to update the state.
@@ -18,7 +19,8 @@ export default function HomePage() {
       setState({ status: "loading" });
       try {
         const res = await axios.get(
-          "https://codaisseur-coders-network.herokuapp.com/posts"
+          // "https://coders-network-api.onrender.com/posts?offset=1&limit=2"
+          "/posts?offset=1&limit=3" //relying on the baseUrl from the axios.ts file
         );
         // update the state with the fetched data. Set the status property to "success"
         // and assign the response data to the data property.
