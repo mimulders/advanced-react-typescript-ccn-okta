@@ -16,6 +16,7 @@ export default function HomePage() {
   });
   useEffect(() => {
     (async () => {
+      // debugger;
       setState({ status: "loading" });
       try {
         const res = await axios.get(
