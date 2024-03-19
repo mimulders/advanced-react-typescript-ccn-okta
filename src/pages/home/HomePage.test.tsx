@@ -5,7 +5,17 @@ import mockAxios from "axios";
 import HomePage from "./HomePage";
 import { makeFakePost } from "../../test/fixtures";
 
-it("renders learn react link", async () => {
+test("renders error after fetch fails", async () => {
+  (mockAxios as jest.Mocked<typeof mockAxios>).get.mockImplementation(() =>
+    Promise.reject("Couldn't get posts")
+  );
+  render(<HomePage />);
+
+  const errorMessage = await screen.findByText("ERROR!");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+it("renders two posts", async () => {
   (mockAxios as jest.Mocked<typeof mockAxios>).get.mockImplementation(
     (url: string, _config: any) => {
       if (url.match(/\/posts\?offset=1&limit=3$/)) {
