@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+# Kyna Exercises
+
+1. Created app with create-react-app
+2. Added basic supporting packages
+3. Scaffolding basic folder structure and initial pages
+4. Fetching and rendering data
+5. Added the --no-cache flag to make sure the debugger works correctly
+6. Fixed App unit test and added stub HomePage unit test
+7. Testing the HomePage component's data fetching
+8. Added HomePage test case for error handling
+9. Added Cypress to the project, and a navigation test
+10. Added Cypress test to check the data fetching on the homepage, including a server mock
+11. Extracted data fetching logic into useFetchData custom hook

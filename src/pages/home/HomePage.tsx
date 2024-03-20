@@ -34,7 +34,8 @@ export default function HomePage() {
   // }, []);
 
   //replace the above code with a call to custom hook useFetchData
-  const state = useFetchData("/posts?offset=1&limit=3");
+  //make sure the return value has type as defined in Postsresponse
+  const state = useFetchData<PostsResponse>("/posts?offset=1&limit=3");
 
   return (
     <Container fixed>

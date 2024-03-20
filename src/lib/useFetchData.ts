@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { FetchState } from "../util/fetchstate";
-import { PostsResponse } from "./model";
 
-export default function useFetchData(url: string) {
-  const [state, setState] = useState<FetchState<PostsResponse>>({
+export default function useFetchData<Data>(url: string) {
+  const [state, setState] = useState<FetchState<Data>>({
     status: "loading",
   });
 
@@ -14,7 +13,7 @@ export default function useFetchData(url: string) {
     (async () => {
       setState({ status: "loading" });
       try {
-        const res = await axios.get<PostsResponse>(url);
+        const res = await axios.get(url);
         setState({ status: "success", data: res.data });
       } catch (error) {
         setState({ status: "error", error });
