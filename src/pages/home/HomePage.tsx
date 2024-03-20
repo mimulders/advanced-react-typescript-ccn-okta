@@ -1,5 +1,6 @@
 // src/pages/home/HomePage.tsx
 import React, { useEffect, useState } from "react";
+import useFetchData from "../../lib/useFetchData";
 
 import { Typography, Container, Grid, Card, CardContent } from "@mui/material";
 import { FetchState } from "../../util/fetchstate";
@@ -11,26 +12,29 @@ export default function HomePage() {
   // Declare a state variable state and a function setState to update the state.
   // Use the useState hook to initialize the state with an object containing a status property set to "loading".
   // The FetchState type is used to define the shape of the state object.
-  const [state, setState] = useState<FetchState<PostsResponse>>({
-    status: "loading",
-  });
-  useEffect(() => {
-    (async () => {
-      // debugger;
-      setState({ status: "loading" });
-      try {
-        const res = await axios.get(
-          // "https://coders-network-api.onrender.com/posts?offset=1&limit=2"
-          "/posts?offset=1&limit=3" //relying on the baseUrl from the axios.ts file
-        );
-        // update the state with the fetched data. Set the status property to "success"
-        // and assign the response data to the data property.
-        setState({ status: "success", data: res.data });
-      } catch (error) {
-        setState({ status: "error", error });
-      }
-    })();
-  }, []);
+  // const [state, setState] = useState<FetchState<PostsResponse>>({
+  //   status: "loading",
+  // });
+  // useEffect(() => {
+  //   (async () => {
+  //     // debugger;
+  //     setState({ status: "loading" });
+  //     try {
+  //       const res = await axios.get(
+  //         // "https://coders-network-api.onrender.com/posts?offset=1&limit=2"
+  //         "/posts?offset=1&limit=3" //relying on the baseUrl from the axios.ts file
+  //       );
+  //       // update the state with the fetched data. Set the status property to "success"
+  //       // and assign the response data to the data property.
+  //       setState({ status: "success", data: res.data });
+  //     } catch (error) {
+  //       setState({ status: "error", error });
+  //     }
+  //   })();
+  // }, []);
+
+  //replace the above code with a call to custom hook useFetchData
+  const state = useFetchData("/posts?offset=1&limit=3");
 
   return (
     <Container fixed>
