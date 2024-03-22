@@ -58,3 +58,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 9. Added Cypress to the project, and a navigation test
 10. Added Cypress test to check the data fetching on the homepage, including a server mock
 11. Extracted data fetching logic into useFetchData custom hook
+12. Use React Context to define a theme
+13. Added theme fallback value
+14. Setting the toolbar background color in accordance with the theme

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AppBar, Toolbar, IconButton, Button } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import { Routes, Route, Link as RouterLink } from "react-router-dom";
@@ -6,12 +6,16 @@ import { Routes, Route, Link as RouterLink } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import SignupPage from "./pages/auth/SignupPage";
 import LoginPage from "./pages/auth/LoginPage";
+import { ThemeContext } from "./lib/theme";
 
 export default function App() {
+  const theme = useContext(ThemeContext);
   return (
     <div>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar
+          style={{ backgroundColor: theme.colors.toolbarBackgroundColor }}
+        >
           <IconButton
             component={RouterLink}
             to="/"

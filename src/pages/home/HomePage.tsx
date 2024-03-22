@@ -1,5 +1,5 @@
 // src/pages/home/HomePage.tsx
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useFetchData from "../../lib/useFetchData";
 
 import { Typography, Container, Grid, Card, CardContent } from "@mui/material";
@@ -7,6 +7,7 @@ import { FetchState } from "../../util/fetchstate";
 import { PostsResponse } from "../../lib/model";
 // import axios from "axios";
 import axios from "../../axios"; // import the axios instance from the axios.ts file; it contains the base url
+import { ThemeContext } from "../../lib/theme";
 
 export default function HomePage() {
   // Declare a state variable state and a function setState to update the state.
@@ -37,6 +38,8 @@ export default function HomePage() {
   //make sure the return value has type as defined in Postsresponse
   const state = useFetchData<PostsResponse>("/posts?offset=1&limit=3");
 
+  const theme = useContext(ThemeContext);
+
   return (
     <Container fixed>
       <Typography variant="h3" component="h1">
@@ -61,6 +64,10 @@ export default function HomePage() {
                       variant="body2"
                       color="textSecondary"
                       component="p"
+                      style={{
+                        color: theme.colors.textColor,
+                        backgroundColor: theme.colors.backgroundColor,
+                      }}
                     >
                       {post.content}
                     </Typography>
