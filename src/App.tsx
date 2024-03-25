@@ -7,12 +7,24 @@ import HomePage from "./pages/home/HomePage";
 import SignupPage from "./pages/auth/SignupPage";
 import LoginPage from "./pages/auth/LoginPage";
 import { ThemeContext } from "./lib/theme";
+import { FetchDataCacheContext } from "./lib/fetchDataCache";
+
 // import SunnyIcon from "@mui/icons/WbSunny";
 // ^^ gives error: Cannot find module '@mui/icons/WbSunny' or its corresponding type declarations.
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 
 export default function App() {
   const { theme, toggle } = useContext(ThemeContext);
+  const { addItem, getResultsForUrl, cache } = useContext(
+    FetchDataCacheContext
+  );
+  console.log("current cache:", cache);
+  console.log("has item?:", getResultsForUrl("http://ab.cd"));
+
+  // just attach this to any random element in the page for now ;)
+  const onClickWhatever = () => {
+    addItem("http://ab.cd", { answer: 42 });
+  };
   return (
     <div>
       <AppBar position="static">
@@ -45,7 +57,9 @@ export default function App() {
           </Button>
         </Toolbar>
       </AppBar>
-      <div style={{ height: "2rem" }} />
+      <div style={{ height: "2rem" }}>
+        <button onClick={onClickWhatever}>test adding item to cache</button>
+      </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />

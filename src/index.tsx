@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./lib/theme";
 
 import axios from "axios";
+import { FetchDataCacheProvider } from "./lib/fetchDataCache";
 
 declare global {
   interface Window {
@@ -25,7 +26,10 @@ root.render(
     <BrowserRouter>
       {/* wrap the whole app with the ThemeProvider */}
       <ThemeProvider>
-        <App />
+        {/* wrap the App component with the FetchDataCacheProvider */}
+        <FetchDataCacheProvider>
+          <App />
+        </FetchDataCacheProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
