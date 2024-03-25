@@ -38,7 +38,7 @@ export default function HomePage() {
   //make sure the return value has type as defined in Postsresponse
   const state = useFetchData<PostsResponse>("/posts?offset=1&limit=3");
 
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <Container fixed>

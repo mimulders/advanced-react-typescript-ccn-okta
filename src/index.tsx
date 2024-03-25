@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeContext } from "./lib/theme";
+import { ThemeProvider } from "./lib/theme";
 
 import axios from "axios";
 
@@ -23,19 +23,10 @@ root.render(
   <React.StrictMode>
     {/* wrap the whole app with BrowserRouter */}
     <BrowserRouter>
-      {/* wrap the whole app with the ThemeContext */}
-      <ThemeContext.Provider
-        value={{
-          fontFamily: "Arial",
-          colors: {
-            backgroundColor: "white",
-            textColor: "#c00",
-            toolbarBackgroundColor: "#555",
-          },
-        }}
-      >
+      {/* wrap the whole app with the ThemeProvider */}
+      <ThemeProvider>
         <App />
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

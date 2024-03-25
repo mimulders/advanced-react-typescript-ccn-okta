@@ -7,9 +7,12 @@ import HomePage from "./pages/home/HomePage";
 import SignupPage from "./pages/auth/SignupPage";
 import LoginPage from "./pages/auth/LoginPage";
 import { ThemeContext } from "./lib/theme";
+// import SunnyIcon from "@mui/icons/WbSunny";
+// ^^ gives error: Cannot find module '@mui/icons/WbSunny' or its corresponding type declarations.
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
 
 export default function App() {
-  const theme = useContext(ThemeContext);
+  const { theme, toggle } = useContext(ThemeContext);
   return (
     <div>
       <AppBar position="static">
@@ -24,6 +27,14 @@ export default function App() {
             aria-label="menu"
           >
             <HomeIcon />
+          </IconButton>
+          <IconButton
+            onClick={toggle}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
+            <WbSunnyIcon />
           </IconButton>
           <div style={{ flexGrow: 1 }} />
           <Button color="inherit" component={RouterLink} to="/signup">

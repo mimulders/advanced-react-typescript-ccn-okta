@@ -61,3 +61,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 12. Use React Context to define a theme
 13. Added theme fallback value
 14. Setting the toolbar background color in accordance with the theme
+15. Refactor the theme.tsx file:
+    to add a custom theme provider wrapper component
+    so that the context's value is not just the theme, but also contains a toggle function
